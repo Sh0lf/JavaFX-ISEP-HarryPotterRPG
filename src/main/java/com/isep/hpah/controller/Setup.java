@@ -17,9 +17,6 @@ import java.util.Random;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-
 @Setter @Getter
 public class Setup {
     //Generate random core from enum

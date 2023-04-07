@@ -4,6 +4,7 @@ module com.isep.hpah {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires lombok;
 
     opens com.isep.hpah to javafx.fxml;
     exports com.isep.hpah;
