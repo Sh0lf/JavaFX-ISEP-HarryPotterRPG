@@ -3,8 +3,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+
+<?import javafx.geometry.Insets?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.hpah.views.scenes.controller.IntroductionController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="77.0" text="Label" />
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
+         <padding>
+            <Insets topRightBottomLeft="50"/>
+         </padding>
+         <children>
+            <Label text="Welcome to Hogwarts, apprentice ! Are you ready to start a new adventure ?!!" fx:id ="gameStart" />
+            <Button mnemonicParsing="false" text="Start Game" onAction="#onButtonClick"/>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
