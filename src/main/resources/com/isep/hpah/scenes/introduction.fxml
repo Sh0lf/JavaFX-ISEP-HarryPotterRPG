@@ -1,19 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<?import javafx.geometry.Insets?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.hpah.views.scenes.controller.IntroductionController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('com/isep/hpah/assets/HogwartsLegacy.jpeg');" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.hpah.views.UI.controller.IntroductionController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <padding>
-            <Insets topRightBottomLeft="50"/>
+            <Insets topRightBottomLeft="50" />
          </padding>
          <children>
-            <Label text="Welcome to Hogwarts, apprentice ! Are you ready to start a new adventure ?!!" fx:id ="gameStart" />
-            <Button mnemonicParsing="false" text="Start Game" onAction="#onButtonClick"/>
+            <Label fx:id="gameStart" text="Welcome to Hogwarts, apprentice !">
+               <font>
+                  <Font name="Arial Bold Italic" size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding></Label>
+            <Label fx:id="gameStart1" text="Are you ready to start a new adventure ?!!">
+               <font>
+                  <Font name="Arial Bold Italic" size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding></Label>
+            <Button mnemonicParsing="false" onAction="#onButtonClick" text="Start Game">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></Button>
          </children>
       </VBox>
    </children>

@@ -1,4 +1,4 @@
-package com.isep.hpah.JavaFXexample;
+package com.isep.hpah.views.JavaFXexample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
