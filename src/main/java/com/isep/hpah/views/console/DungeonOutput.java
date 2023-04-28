@@ -257,7 +257,7 @@ public class DungeonOutput {
 
     public void newSpell(AbstractSpell spell){
         out.printHeading("\nYou know a new spell: \n" + spell.getName() + ", " + spell.getDesc() +
-                "\nMana: " + spell.getMana() + " and Cooldown: " + spell.getCooldown());
+                "\nType:" + spell.getType() + ", Mana: " + spell.getMana() + " and Cooldown: " + spell.getCooldown());
     }
 
     public void newPotion(Potion potion){

@@ -12,6 +12,21 @@ public class WelcomeOutput {
     SimpleOutput out = new SimpleOutput();
     Setup stp = new Setup();
 
+    public int choiceGame(SafeScanner sc){
+        int dec = 0;
+        boolean verifInput = false;
+        while(!verifInput)
+            try {
+                out.printHeading("How would you like to play:\n1. Console\n2. GUI");
+                dec = sc.getInt();
+                verifInput = true;
+            } catch (Exception e) {
+                out.print("Please enter a valid string, not an integer !");
+                verifInput = false;
+            }
+        return dec;
+    }
+
     public String name(SafeScanner sc) {
         boolean verifInput = false;
         out.printHeading("Harry Potter RPG game, made by Yap Vincent");
