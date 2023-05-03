@@ -21,7 +21,7 @@ public class WelcomeOutput {
                 dec = sc.getInt();
                 verifInput = true;
             } catch (Exception e) {
-                out.print("Please enter a valid string, not an integer !");
+                out.print("Please enter a valid integer !");
                 verifInput = false;
             }
         return dec;

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url('com/isep/hpah/assets/HogwartsLegacy.jpeg');" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.hpah.views.GUI.controller.IntroductionController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url('file:com/isep/hpah/assets/HogwartsLegacy.jpeg');" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.hpah.views.GUI.controller.IntroductionController">
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
          <padding>
@@ -29,7 +29,7 @@
                <padding>
                   <Insets bottom="10.0" top="10.0" />
                </padding></Label>
-            <Button mnemonicParsing="false" onAction="#onButtonClick" text="Start Game">
+            <Button fx:id="startButton" onAction="#onStartButtonClick" text="Start Game">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>

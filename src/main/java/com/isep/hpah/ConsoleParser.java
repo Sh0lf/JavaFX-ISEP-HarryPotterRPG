@@ -9,8 +9,8 @@ import com.isep.hpah.views.console.WelcomeOutput;
 
 import java.util.List;
 
-public class ConsoleMain {
-    public void consoleMain() {
+public class ConsoleParser {
+    public void consoleParser() {
         GameEngine game = new GameEngine();
         Setup stp = new Setup();
         SafeScanner sc = new SafeScanner(System.in);
