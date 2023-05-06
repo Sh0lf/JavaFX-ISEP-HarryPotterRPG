@@ -15,7 +15,7 @@ import java.io.IOException;
 public class GUIParser extends Application{
     public void start(Stage stage) throws IOException {
         StageLoader.setStage(stage);
-        StageLoader.loadFXMLScene("/com/isep/hpah/scenes/introduction.fxml");
+        StageLoader.loadFXMLScene("/resources/com/isep/hpah/scenes/introduction.fxml");
     }
 
     public void launchInterface()

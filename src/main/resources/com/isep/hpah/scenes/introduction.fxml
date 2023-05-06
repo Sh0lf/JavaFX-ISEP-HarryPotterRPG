@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url('file:com/isep/hpah/assets/HogwartsLegacy.jpeg');" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.hpah.views.GUI.controller.IntroductionController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.hpah.views.GUI.controller.IntroductionController">
    <children>
-      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/HogwartsLegacy.jpeg" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="20.0">
          <padding>
             <Insets topRightBottomLeft="50" />
          </padding>
          <children>
-            <Label fx:id="gameStart" text="Welcome to Hogwarts, apprentice !">
+            <Label fx:id="gameStart" style="-fx-background-color: BLACK;" text="Welcome to Hogwarts, apprentice !" textFill="WHITE">
                <font>
                   <Font name="Arial Bold Italic" size="16.0" />
                </font>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
                </padding></Label>
-            <Label fx:id="gameStart1" text="Are you ready to start a new adventure ?!!">
+            <Label fx:id="gameStart1" style="-fx-background-color: BLACK;" text="Are you ready to start a new adventure ?!!" textFill="WHITE">
                <font>
                   <Font name="Arial Bold Italic" size="16.0" />
                </font>
@@ -38,5 +47,13 @@
                </padding></Button>
          </children>
       </VBox>
+      <Button fx:id="cancelButton" layoutX="716.0" layoutY="546.0" mnemonicParsing="false" onAction="#onCancelButtonClick" text="Cancel">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        <font>
+            <Font name="Arial" size="16.0" />
+        </font>
+      </Button>
    </children>
 </AnchorPane>

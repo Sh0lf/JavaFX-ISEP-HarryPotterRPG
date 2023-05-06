@@ -25,8 +25,17 @@ public class IntroductionController {
         private Button startButton;
 
         @FXML
+        private Button cancelButton;
+
+        @FXML
         void onStartButtonClick() throws IOException {
                 StageLoader.loadFXMLScene("/com/isep/hpah/scenes/setupPlayer.fxml");
+        }
+
+        @FXML
+        void onCancelButtonClick() {
+                Stage stage = (Stage) cancelButton.getScene().getWindow();
+                stage.close();
         }
 
 }

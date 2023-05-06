@@ -236,6 +236,7 @@ public class GameLogic {
         // Determine the outcome of the fight
         if (player.getHealth() <= 0) {
             dngout.loss();
+            System.exit(0);
         } else {
             dngout.victory();
         }
