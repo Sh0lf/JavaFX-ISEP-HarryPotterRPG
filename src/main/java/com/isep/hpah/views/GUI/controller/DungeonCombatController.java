@@ -1,7 +1,7 @@
 package com.isep.hpah.views.GUI.controller;
 
-import com.isep.hpah.controller.GameEngine;
-import com.isep.hpah.controller.GameLogic;
+import com.isep.hpah.controller.GameEngineGUI;
+import com.isep.hpah.controller.GameLogicGUI;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,8 +12,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
 
 public class DungeonCombatController {
-    GameEngine gameeng = new GameEngine();
-    GameLogic gamelgc = new GameLogic();
+    GameEngineGUI gamengGUI = new GameEngineGUI();
+    GameLogicGUI gamelgcGUI = new GameLogicGUI();
     DungeonPresentationController dngs = new DungeonPresentationController();
     SetupController stpcon = new SetupController();
 

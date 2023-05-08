@@ -13,4 +13,6 @@ module com.isep.hpah {
     exports com.isep.hpah.views.GUI.controller;
     opens com.isep.hpah.views.GUI.controller to javafx.fxml;
     opens com.isep.hpah.views.JavaFXexample to javafx.fxml;
+    exports com.isep.hpah.views.GUI;
+    opens com.isep.hpah.views.GUI to javafx.fxml;
 }
