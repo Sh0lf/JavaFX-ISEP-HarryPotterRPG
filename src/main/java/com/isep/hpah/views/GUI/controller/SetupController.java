@@ -135,7 +135,11 @@ public class SetupController {
     @FXML
     void onConfirmButtonClick() throws IOException {
 
-        if (ref == 1){
+        if (ref == 2){
+            StageLoader.loadFXMLScene("/com/isep/hpah/scenes/dungeonPresentation.fxml");
+        }
+
+        else if (ref == 1){
             nameComp = nameInput.getText();
             res1Comp = (sortingHatR1.getSelectionModel().getSelectedIndex() + 1) *10;
             res2Comp = sortingHatR2.getSelectionModel().getSelectedIndex() + 1;
@@ -165,7 +169,7 @@ public class SetupController {
                 characterText.getChildren().clear();
 
                 sortingHatQ1.setLayoutX(30);
-                sortingHatQ1.setLayoutY(90);
+                sortingHatQ1.setLayoutY(150);
                 sortingHatQ2.setLayoutX(460);
                 sortingHatQ2.setLayoutY(250);
 
@@ -237,9 +241,6 @@ public class SetupController {
             characterText.getChildren().add(character);
 
             ref = 1;
-        }
-        else if (ref == 2){
-            StageLoader.loadFXMLScene("/com/isep/hpah/scenes/dungeonCombat.fxml");
         }
     }
 }
