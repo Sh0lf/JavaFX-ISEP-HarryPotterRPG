@@ -228,6 +228,7 @@ public class DungeonOutput {
 
     public void loss(){
         out.print("\nYou have been defeated.");
+        out.pressEnterToContinue();
     }
 
     public void victory(){

@@ -1,5 +1,7 @@
 package com.isep.hpah.views.GUI.controller;
 
+import com.isep.hpah.controller.GameEngine;
+import com.isep.hpah.controller.GameLogic;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,6 +12,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
 
 public class DungeonCombatController {
+    GameEngine gameeng = new GameEngine();
+    GameLogic gamelgc = new GameLogic();
+    DungeonPresentationController dngs = new DungeonPresentationController();
+    SetupController stpcon = new SetupController();
+
+
 
     @FXML
     private Button attButton;

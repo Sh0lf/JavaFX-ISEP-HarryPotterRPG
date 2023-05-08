@@ -1,6 +1,7 @@
 package com.isep.hpah.views.GUI.controller;
 
 import com.isep.hpah.GUIParser;
+import com.isep.hpah.controller.Setup;
 import com.isep.hpah.views.GUI.StageLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

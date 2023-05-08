@@ -38,6 +38,7 @@ public class SetupController {
     int finalRes;
     Text character;
     int ref = 0;
+    protected Wizard player;
 
     String nameComp;
     int res1Comp;
@@ -145,7 +146,7 @@ public class SetupController {
             if (!Objects.equals(nameComp, name) || res1Comp != res1 || res2Comp != res2 || !Objects.equals(wandNameComp, wandName) || wandSizeComp != wandSize){
                 ref = 0;
             } else {
-                Wizard player = stp.playerCreation(name, wand, pet, house);
+                player = stp.playerCreation(name, wand, pet, house);
 
                 sortingHatR1.setVisible(false);
                 sortingHatR2.setVisible(false);
