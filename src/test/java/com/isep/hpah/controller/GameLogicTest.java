@@ -44,6 +44,7 @@ public class GameLogicTest {
             .corruptionGauge(50)
             .maxMana(100)
             .mana(100)
+            .typeGame("console")
             .build();
 
     private final Boss basilisk = Boss.builder()
@@ -133,7 +134,7 @@ public class GameLogicTest {
 
         // run the method with round 10
         DungeonOutput dngout = new DungeonOutput();
-        gameLogic.checkUmbridgeWinCon(enemies, 10);
+        gameLogic.checkUmbridgeWinCon(player, enemies, 10);
 
         // check that the expected message was printed
         assertEquals("You survived long enough against Umbridge and you succeeded in tempoying her long enough to win !\n", outContent.toString());
@@ -268,7 +269,7 @@ public class GameLogicTest {
         ByteArrayInputStream in = new ByteArrayInputStream("2\n".getBytes());
         SafeScanner sc = new SafeScanner(in);
 
-        int spellIndex = gameLogic.chooseSpell(spells, sc);
+        int spellIndex = gameLogic.chooseSpell(player, spells, sc);
 
         AbstractSpell spell = spells.get(spellIndex);
 

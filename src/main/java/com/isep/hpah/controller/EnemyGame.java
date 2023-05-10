@@ -4,9 +4,11 @@ import com.isep.hpah.model.constructors.Potion;
 import com.isep.hpah.model.constructors.character.Character;
 import com.isep.hpah.model.constructors.character.*;
 import com.isep.hpah.model.constructors.spells.AbstractSpell;
+import com.isep.hpah.views.GUI.DungeonOutputGUI;
 import com.isep.hpah.views.console.DungeonOutput;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class EnemyGame {
@@ -14,6 +16,7 @@ public class EnemyGame {
     AllSpellsFunction spfnc = new AllSpellsFunction();
     AllPotionsFunction popofnc = new AllPotionsFunction();
     DungeonOutput dngout = new DungeonOutput();
+    DungeonOutputGUI dngoutGUI = new DungeonOutputGUI();
 
 
     public void enemiesTurn(List<Character> enemies, Wizard player){
@@ -31,7 +34,12 @@ public class EnemyGame {
         for (Character enemy : enemies) {
             if (enemy.getHealth() <= 0) {
                 player.setExp(player.getExp() + enemy.getExp());
-                dngout.gainedExp(enemy);
+                if (Objects.equals(player.getTypeGame(), "console")) {
+                    dngout.gainedExp(enemy);
+                }
+                else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                    // TODO : GUI part if player creation GUI
+                }
             }
         }
     }
@@ -42,7 +50,12 @@ public class EnemyGame {
             enemy.normalAttack(player);
         } else {
             enemy.setDefending(true);
-            dngout.isDefending(enemy);
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.isDefending(enemy);
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         }
     }
 
@@ -52,7 +65,12 @@ public class EnemyGame {
             enemy.normalAttack(player);
         } else if (0.5 < rand && rand <= 0.7){
             enemy.setDefending(true);
-            dngout.isDefending(enemy);
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.isDefending(enemy);
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         } else if ( 0.7 < rand && rand <= 0.9) {
             List<AbstractSpell> enemySpell = enemy.getKnownSpells();
             // initializing random class

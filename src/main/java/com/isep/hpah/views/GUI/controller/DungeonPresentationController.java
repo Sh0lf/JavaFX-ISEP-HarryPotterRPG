@@ -13,8 +13,9 @@ import java.util.List;
 public class DungeonPresentationController {
         Setup stp = new Setup();
         protected List<Dungeon> dungeons = stp.allDungeon();
-        String dungeonNameTxt = dungeons.get(0).getName();
-        String dungeonDescTxt = dungeons.get(0).getDesc();
+        int n = 0;
+        String dungeonNameTxt = "Round "+ n+1 + " : " + dungeons.get(n).getName();
+        String dungeonDescTxt = dungeons.get(n).getDesc();
 
         @FXML
         private Button confirmButton;
@@ -25,12 +26,16 @@ public class DungeonPresentationController {
         @FXML
         private TextFlow dungeonName;
 
+        @FXML
         void initialize() {
                 Text dungeonNameText = new Text(dungeonNameTxt);
                 Text dungeonDescText = new Text(dungeonDescTxt);
 
-                dungeonNameText.setFont(Font.font("Arial", FontWeight.BOLD, 26));
-                dungeonDescText.setFont(Font.font("Arial", FontPosture.REGULAR, 14));
+                dungeonNameText.setFont(Font.font("Arial", FontPosture.ITALIC, 48));
+                dungeonDescText.setFont(Font.font("Arial", FontPosture.REGULAR, 26));
+
+                dungeonName.setTextAlignment(TextAlignment.CENTER);
+                dungeonDesc.setTextAlignment(TextAlignment.CENTER);
 
                 dungeonName.getChildren().add(dungeonNameText);
                 dungeonDesc.getChildren().add(dungeonDescText);

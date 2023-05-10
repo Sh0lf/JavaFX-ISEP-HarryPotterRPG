@@ -150,7 +150,7 @@ public class SetupController {
             if (!Objects.equals(nameComp, name) || res1Comp != res1 || res2Comp != res2 || !Objects.equals(wandNameComp, wandName) || wandSizeComp != wandSize){
                 ref = 0;
             } else {
-                player = stp.playerCreation(name, wand, pet, house);
+                player = stp.playerCreation(name, wand, pet, house, "GUI");
 
                 sortingHatR1.setVisible(false);
                 sortingHatR2.setVisible(false);

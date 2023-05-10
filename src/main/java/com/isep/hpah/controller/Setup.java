@@ -298,7 +298,7 @@ public class Setup {
             .mana(200)
             .build();
 
-    public Wizard playerCreation (String name, Wand wand, Pet pet, House house) {
+    public Wizard playerCreation (String name, Wand wand, Pet pet, House house, String typeGame) {
         int defaultDef = 10;
         int defaultDex = 10;
 
@@ -327,6 +327,7 @@ public class Setup {
             .corruptionGauge(0)
             .maxMana(100)
             .mana(100)
+            .typeGame(typeGame)
             .build();
     }
 

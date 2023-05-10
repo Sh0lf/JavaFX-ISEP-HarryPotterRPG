@@ -3,6 +3,7 @@ package com.isep.hpah.controller;
 import com.isep.hpah.model.constructors.*;
 import com.isep.hpah.model.constructors.character.Wizard;
 import com.isep.hpah.model.constructors.spells.AbstractSpell;
+import com.isep.hpah.views.GUI.DungeonOutputGUI;
 import com.isep.hpah.views.console.DungeonOutput;
 import com.isep.hpah.views.console.SafeScanner;
 import com.isep.hpah.model.constructors.character.Character; //Because of suspected ambiguity
@@ -17,19 +18,49 @@ public class GameLogic {
     private final Setup stp = new Setup();
     private final SafeScanner sc = new SafeScanner(System.in);
     private final DungeonOutput dngout = new DungeonOutput();
+    private final DungeonOutputGUI dngoutGUI = new DungeonOutputGUI();
 
     public void corruptionCheck(Wizard player){
         if (player.getCorruptionGauge() >= 100){
             player.setHealth(0);
-            dngout.corrupted();
-            dngout.loss();
+            if (Objects.equals(player.getTypeGame(), "console")){
+                dngout.corrupted();
+                dngout.loss();
+            } else if (Objects.equals(player.getTypeGame(), "GUI")){
+                // TODO : GUI part if player creation GUI
+            }
         }
     }
 
-    public void checkUmbridgeWinCon(List<Character> enemies, int round){
+    public void checkUmbridgeWinCon(Wizard player, List<Character> enemies, int round){
         if (enemies.get(0).getName().equals("Dolores Umbridge") && round == 10){
             enemies.get(0).setHealth(0);
-            dngout.umbridgeWinCon();
+            if (Objects.equals(player.getTypeGame(), "console")){
+                dngout.umbridgeWinCon();
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")){
+                // TODO : GUI part if player creation GUI
+            }
+        }
+    }
+
+    public void enemiesDisplay(Wizard player, List<Character> enemies){
+        //checking what text to print based on enemy
+        if (Objects.equals(player.getTypeGame(), "console")){
+            dngout.checkEnemiesText(enemies);
+            //list all the enemies with their stats
+            dngout.listEnemies(enemies);
+        } else if (Objects.equals(player.getTypeGame(), "GUI")){
+            // TODO : GUI part if player creation GUI
+        }
+    }
+
+    public void isDefending(Wizard player){
+        if (Objects.equals(player.getTypeGame(), "console")){
+            dngout.isDefending(player);
+        }
+        else if (Objects.equals(player.getTypeGame(), "GUI")){
+            // TODO : GUI part if player creation GUI
         }
     }
 
@@ -65,7 +96,11 @@ public class GameLogic {
     public boolean choice4(List<Potion> potions, Wizard player){
         boolean check;
         if (potions.isEmpty()){
-            dngout.potionEmpty();
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.potionEmpty();
+            } else if (Objects.equals(player.getTypeGame(), "GUI")){
+                // TODO : GUI part if player creation GUI
+            }
             check = false;
         } else {
             //Use popos, pretty simple
@@ -73,7 +108,11 @@ public class GameLogic {
             if (potionIndex == potions.size()){
                 check = false;
             } else {
-                popofnc.usePotion(player, potionIndex);
+                if (Objects.equals(player.getTypeGame(), "console")) {
+                    popofnc.usePotion(player, potionIndex);
+                } else if (Objects.equals(player.getTypeGame(), "GUI")){
+                    // TODO : GUI part if player creation GUI
+                }
                 check = true;
             }
         }
@@ -83,7 +122,11 @@ public class GameLogic {
     public void gryffindorSword(Wizard player, List<Character> enemies){
         if (player.getHouse().equals(House.GRYFFINDOR) && enemies.get(0).getName().equals("Basilisk")){
             player.setAtt(player.getAtt() * 2);
-            dngout.gryffindorSwordTxt();
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.gryffindorSwordTxt();
+            } else if (Objects.equals(player.getTypeGame(), "GUI")){
+                // TODO : GUI part if player creation GUI
+            }
         }
     }
 
@@ -94,17 +137,29 @@ public class GameLogic {
 
             if ((0.2 < rand) && (rand <= 0.5)){
                 player.setHealth(player.getHealth() - 20);
-                dngout.voldemortCoreTxt(rand);
+                if (Objects.equals(player.getTypeGame(), "console")) {
+                    dngout.voldemortCoreTxt(rand);
+                } else if (Objects.equals(player.getTypeGame(), "GUI")){
+                    // TODO : GUI part if player creation GUI
+                }
             }
             else if ((0.5 < rand) && (rand <= 0.8)){
                 player.setPotionDefBoost(player.getPotionDefBoost() - 10);
                 player.setDef(player.getDef() - 10);
-                dngout.voldemortCoreTxt(rand);
+                if (Objects.equals(player.getTypeGame(), "console")) {
+                    dngout.voldemortCoreTxt(rand);
+                } else if (Objects.equals(player.getTypeGame(), "GUI")){
+                    // TODO : GUI part if player creation GUI
+                }
             }
             else if ((0.8 < rand) && (rand <= 1)){
                 player.setPotionDexBoost(player.getPotionDexBoost() - 5);
                 player.setDex(player.getDex() - 5);
-                dngout.voldemortCoreTxt(rand);
+                if (Objects.equals(player.getTypeGame(), "console")) {
+                    dngout.voldemortCoreTxt(rand);
+                } else if (Objects.equals(player.getTypeGame(), "GUI")){
+                    // TODO : GUI part if player creation GUI
+                }
             }
         }
     }
@@ -118,45 +173,86 @@ public class GameLogic {
 
     public int presentingTurn(Wizard player, int round, SafeScanner sc, List<Character> enemies, List<String> poss){
         int i = 1;
-        i = dngout.presentingTurnTxt(i, round, player, enemies, sc, poss);
-        player.setDefending(false);
-        i = dngout.presentingTurnTxt(i, round, player, enemies, sc, poss);
-        // Player's turn
-        return dngout.presentingTurnTxt(i, round, player, enemies, sc, poss);
+        if (Objects.equals(player.getTypeGame(), "console")) {
+            i = dngout.presentingTurnTxt(i, round, player, enemies, sc, poss);
+            player.setDefending(false);
+            i = dngout.presentingTurnTxt(i, round, player, enemies, sc, poss);
+            // Player's turn
+            return dngout.presentingTurnTxt(i, round, player, enemies, sc, poss);
+        } else if (Objects.equals(player.getTypeGame(), "GUI")){
+            // TODO : GUI part if player creation GUI
+            return i;
+        }
+        return i; // Just to have a return case
     }
 
     public boolean attacking(List<Character> enemies, Wizard player, SafeScanner sc){
-        int targetIndex = dngout.chooseTarget(enemies, sc);
-        if (targetIndex == enemies.size()){
-            return false;
-        } else {
-            Character target = enemies.get(targetIndex);
-            player.normalAttack(target);
+        if (Objects.equals(player.getTypeGame(), "console")) {
+            int targetIndex = dngout.chooseTarget(enemies, sc);
+            if (targetIndex == enemies.size()){
+                return false;
+            } else {
+                Character target = enemies.get(targetIndex);
+                player.normalAttack(target);
+                return true;
+            }
+        } else if (Objects.equals(player.getTypeGame(), "GUI")){
+            // TODO : GUI part if player creation GUI
             return true;
         }
+        return false;
     }
 
-    public int chooseSpell(List<AbstractSpell> spells, SafeScanner sc) {
-        return dngout.chooseSpell(spells, sc);
+
+    public int chooseSpell(Wizard player, List<AbstractSpell> spells, SafeScanner sc) {
+        if (Objects.equals(player.getTypeGame(), "console")) {
+            return dngout.chooseSpell(spells, sc);
+        } else if (Objects.equals(player.getTypeGame(), "GUI")) {
+            int spellChoice = 0;
+            // TODO : GUI part if player creation GUI
+            return spellChoice;
+        }
+        return 0;
     }
 
     public boolean processDmgSpell(Wizard player, AbstractSpell spell, List<Character> enemies, SafeScanner sc) {
         if (spell.getCooldownRem() > 0) {
-            dngout.inCooldown(spell);
-            return false;
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.inCooldown(spell);
+                return false;
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         } else if (player.getMana() < spell.getMana()) {
-            dngout.noMana(spell);
-            return false;
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.noMana(spell);
+                return false;
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         } else {
             if (spell.getName().equals("Sectumsempra")){
                 if (enemies.get(0).getName().equals("Death Eater")){
-                    dngout.exceptionDeathEater();
+                    if (Objects.equals(player.getTypeGame(), "console")) {
+                        dngout.exceptionDeathEater();
+                    }
+                    else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                        // TODO : GUI part if player creation GUI
+                    }
                     for (Character enemy : enemies) {
                         enemy.setHealth(0);
                     }
                 }
             } else {
-                int targetIndex = dngout.chooseTarget(enemies, sc);
+                int targetIndex = 0;
+                if (Objects.equals(player.getTypeGame(), "console")) {
+                    targetIndex = dngout.chooseTarget(enemies, sc);
+                }
+                else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                    // TODO : GUI part if player creation GUI
+                }
                 if (targetIndex == enemies.size()){
                     return false;
                 } else {
@@ -175,15 +271,30 @@ public class GameLogic {
 
     public boolean processDefSpell(AbstractSpell spell, Wizard player, List<Character> enemies){
         if (spell.getCooldownRem() > 0) {
-            dngout.inCooldown(spell);
-            return false;
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.inCooldown(spell);
+                return false;
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         } else if (player.getMana() < spell.getMana()) {
-            dngout.noMana(spell);
-            return false;
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.noMana(spell);
+                return false;
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         } else {
-            if (spell.getName().equals("Expecto Patronum")){
-                if (enemies.get(0).getName().equals("Dementor")){
-                    dngout.exceptionDementor();
+            if (spell.getName().equals("Expecto Patronum")) {
+                if (enemies.get(0).getName().equals("Dementor")) {
+                    if (Objects.equals(player.getTypeGame(), "console")) {
+                        dngout.exceptionDementor();
+                    }
+                    else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                        // TODO : GUI part if player creation GUI
+                    }
                     for (Character enemy : enemies) {
                         enemy.setHealth(0);
                     }
@@ -194,31 +305,46 @@ public class GameLogic {
                 spfnc.manaReduce(spell, player);
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
 
     public int processUtlSpell(Wizard player, AbstractSpell spell, List<Character> enemies, SafeScanner sc){
         if (spell.getCooldownRem() > 0) {
-            dngout.inCooldown(spell);
-            return 100;
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.inCooldown(spell);
+                return 100;
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         } else if (player.getMana() < spell.getMana()) {
-            dngout.noMana(spell);
-            return 100;
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.noMana(spell);
+                return 100;
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         } else {
-
-            int targetIndex = spfnc.checkUtlSpellUsage(spell, enemies, sc);
-
+            int targetIndex = spfnc.checkUtlSpellUsage(player, spell, enemies, sc);
             spell.setCooldownRem(spell.getCooldown());
-
             spfnc.manaReduce(spell, player);
-
             return targetIndex;
         }
+        return 100;
     }
 
     public int selectPotion(Wizard player){
         List<Potion> potions = player.getPotionsOwned();
-        return dngout.selectPotionTxt(potions, sc);
+        if (Objects.equals(player.getTypeGame(), "console")) {
+            return dngout.selectPotionTxt(potions, sc);
+        } else if (Objects.equals(player.getTypeGame(), "GUI")) {
+            int spellChoice = 0;
+            // TODO : GUI part if player creation GUI
+            return spellChoice;
+        }
+        return 0;
     }
 
     public boolean allyDeathEater(Wizard player, List<Character> enemies, int choice){
@@ -227,25 +353,40 @@ public class GameLogic {
         }
         player.getKnownSpells().add(stp.deathEaterGroup);
 
-        dngout.deathEaterSpell(stp.deathEaterGroup);
-
+        if (Objects.equals(player.getTypeGame(), "console")) {
+            dngout.deathEaterSpell(stp.deathEaterGroup);
+        } else if (Objects.equals(player.getTypeGame(), "GUI")) {
+            // TODO : GUI part if player creation GUI
+        }
         return true;
     }
 
     public void endDungeon(Wizard player){
         // Determine the outcome of the fight
         if (player.getHealth() <= 0) {
-            dngout.loss();
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.loss();
+            } else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
             System.exit(0);
         } else {
-            dngout.victory();
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.victory();
+            } else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         }
     }
 
     public void removeGryffindorSword(Wizard player, List<Character> enemies){
         if (enemies.get(0).getName().equals("Basilisk") && enemies.get(0).getHealth() == 0) {
             player.setAtt(player.getAtt() / 2);
-            dngout.gryffindorSwordEnd();
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.gryffindorSwordEnd();
+            } else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         }
     }
 
@@ -254,7 +395,11 @@ public class GameLogic {
             int i = 0;
             player.setLevel(player.getLevel() + 1);
             player.setExp(player.getExp()- 50);
-            i = dngout.lvlup(i, player);
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                i = dngout.lvlup(i, player);
+            } else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
 
             player.setMaxHealth(player.getMaxHealth() + 20);
             player.setHealth(player.getMaxHealth());
@@ -265,7 +410,12 @@ public class GameLogic {
             player.setDef(player.getDef() + 5);
             player.setDex(player.getDex() + 2);
 
-            i = dngout.lvlup(i, player);
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.lvlup(i, player);
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         }
     }
 
@@ -275,7 +425,12 @@ public class GameLogic {
         for (AbstractSpell spell : obtainableSpells){
             if (player.getLevel() == spell.getLevel()){
                 player.getKnownSpells().add(spell);
-                dngout.newSpell(spell);
+                if (Objects.equals(player.getTypeGame(), "console")) {
+                    dngout.newSpell(spell);
+                }
+                else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                    // TODO : GUI part if player creation GUI
+                }
             }
         }
     }
@@ -287,7 +442,12 @@ public class GameLogic {
         for (Potion potion : allPotions){
             if (rand > 0.20){
                 player.getPotionsOwned().add(potion);
-                dngout.newPotion(potion);
+                if (Objects.equals(player.getTypeGame(), "console")) {
+                    dngout.newPotion(potion);
+                }
+                else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                    // TODO : GUI part if player creation GUI
+                }
             }
         }
     }
@@ -296,19 +456,34 @@ public class GameLogic {
         if (player.getPotionDefBoost() != 0){
             player.setDef(player.getDef() - player.getPotionDefBoost());
             player.setPotionDefBoost(0);
-            dngout.defPotionBonus(player);
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.defPotionBonus(player);
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         }
         if (player.getPotionDexBoost() != 0){
             player.setDex(player.getDex() - player.getPotionDexBoost());
             player.setPotionDexBoost(0);
-            dngout.dexPotionBonus(player);
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.dexPotionBonus(player);
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         }
     }
 
     public void corruptionHalf(Wizard player){
         if (player.getCorruptionGauge() != 0) {
             player.setCorruptionGauge(player.getCorruptionGauge()/2);
-            dngout.corruptionHalfTxt(player);
+            if (Objects.equals(player.getTypeGame(), "console")) {
+                dngout.corruptionHalfTxt(player);
+            }
+            else if (Objects.equals(player.getTypeGame(), "GUI")) {
+                // TODO : GUI part if player creation GUI
+            }
         }
     }
 }

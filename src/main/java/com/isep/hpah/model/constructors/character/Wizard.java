@@ -22,11 +22,12 @@ public class Wizard extends Character {
     private int defSpell;
     private int potionDefBoost;
     private int potionDexBoost;
+    private String typeGame;
 
     @Builder
     public Wizard(String name, String desc, int health, int exp, int att, int def, int dex, int level, Wand wand, Pet pet,
                   House house, List<AbstractSpell> knownSpells, List<Potion> potionsOwned, int corruptionGauge,
-                  int maxMana, int mana) {
+                  int maxMana, int mana, String typeGame) {
         super(name, "Wizard", desc, health, health, exp, att, def, dex);
         this.level = level;
         this.wand = wand;
@@ -40,5 +41,6 @@ public class Wizard extends Character {
         this.defSpell = 0;
         this.potionDefBoost = 0;
         this.potionDexBoost = 0;
+        this.typeGame = typeGame;
     }
 }

@@ -44,7 +44,7 @@ public class ConsoleParser {
 
         welcome.showWand(wand);
 
-        Wizard player = stp.playerCreation(name, wand, pet, house);
+        Wizard player = stp.playerCreation(name, wand, pet, house, "console");
 
         welcome.showPlayer(player);
 

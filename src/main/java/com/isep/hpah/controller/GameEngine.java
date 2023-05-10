@@ -43,12 +43,12 @@ public class GameEngine {
                     }
                 } else if (choice == 2) {
                     // defend, temporary double the def
-                    dngout.isDefending(player);
+                    gamelgc.isDefending(player);
                     player.setDefending(true);
                     check = true;
                 } else if (choice == 3) {
                     // use spells: check what spell to choose and check what type of spell then do effect
-                    int spellIndex = gamelgc.chooseSpell(spells, sc);
+                    int spellIndex = gamelgc.chooseSpell(player, spells, sc);
                     if (spellIndex < spells.size()){
                         AbstractSpell spell = spells.get(spellIndex);
                         if (spell.getType().equals("UTL")) {
@@ -89,10 +89,8 @@ public class GameEngine {
         gamelgc.checkVoldemortCore(player, enemies);
         //if def spell used etc.
         gamelgc.checkDefBoost(player);
-        //checking what text to print based on enemy
-        dngout.checkEnemiesText(enemies);
-        //list all the enemies with their stats
-        dngout.listEnemies(enemies);
+        // Check how to show the enemy
+        gamelgc.enemiesDisplay(player, enemies);
     }
 
     private void enemyTurnAndChecks(List<Character> enemies, List<AbstractSpell> spells, Wizard player, int round, int targetIndex){
@@ -101,11 +99,11 @@ public class GameEngine {
         // Dungeon2: checking if dead and then remove att boost
         gamelgc.removeGryffindorSword(player, enemies);
         //dungeon5: Umbridge check, win con based on the round number
-        gamelgc.checkUmbridgeWinCon(enemies, round);
+        gamelgc.checkUmbridgeWinCon(player, enemies, round);
         // checking player exp
         gamelgc.checkLevelUp(player);
         // reduce cooldown to spells
-        spfnc.checkCooldown(spells, enemies, targetIndex);
+        spfnc.checkCooldown(player, spells, enemies, targetIndex);
     }
 
     private void endProcessDungeon(Wizard player){
