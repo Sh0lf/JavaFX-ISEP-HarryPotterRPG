@@ -16,7 +16,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class DungeonCombatController {
@@ -78,6 +80,38 @@ public class DungeonCombatController {
 
     @FXML
     protected Button addChoice;
+
+    @FXML
+    int onAttButtonClick() {
+        return 1;
+    }
+
+    @FXML
+    int onDefButtonClick() {
+        return 2;
+    }
+
+    @FXML
+    int onSpellButtonClick() {
+        return 3;
+    }
+
+    @FXML
+    int onPopoButtonClick() {
+        return 4;
+    }
+
+    @FXML
+    int onBonusButtonClick() {
+        return 5;
+    }
+
+    @FXML
+    void onCancelButtonClick() {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
+
 
     @FXML
     public void initialize(Wizard player, List<Character> enemies){
@@ -198,7 +232,6 @@ public class DungeonCombatController {
             i += 1;
             return i;
         } else if (i == 3) {
-            boolean verifInput = false;
             if (player.getHouse().equals(House.SLYTHERIN) && enemies.get(0).getName().equals("Death Eater")) {
                 gameText.getChildren().clear();
                 Text deathEatersDng = new Text("Since you're a Slytherin, you can ally yourself with the Death eaters !\n");
@@ -208,35 +241,15 @@ public class DungeonCombatController {
 
                 addChoice.setVisible(true);
                 addChoice.setText("Ally with the death eaters");
-                while (!verifInput) {
-                    try {
-                        Text turn = new Text("It's your turn to attack. What do you want to do?");
-                        turn.setFont(Font.font("Arial", FontPosture.REGULAR, 16));
-                        gameText.getChildren().add(turn);
 
-                    } catch (Exception e) {
-                        out.print("Please write valid content");
-                        verifInput = false;
-                    }
-                }
+                Text turn = new Text("It's your turn to attack. What do you want to do?");
+                turn.setFont(Font.font("Arial", FontPosture.REGULAR, 16));
+                gameText.getChildren().add(turn);
             } else {
-                while (!verifInput) {
-                    try {
-                        out.print("It's your turn to attack. What do you want to do?");
-                        for (n = 0; n < poss.size(); n++) {
-                            out.print(n+1 + ". " + poss.get(n));
-                        }
-                        i = sc.getInt();
-                        if (i > poss.size()) {
-                            out.print("Number out of index and does not exist ! retry");
-                        } else {
-                            verifInput = true;
-                        }
-                    } catch (Exception e) {
-                        out.print("Please write valid content");
-                        verifInput = false;
-                    }
-                }
+                gameText.getChildren().clear();
+                Text turn = new Text("It's your turn to attack. What do you want to do?");
+                turn.setFont(Font.font("Arial", FontPosture.REGULAR, 16));
+                gameText.getChildren().add(turn);
             }
         } return i;
     }
