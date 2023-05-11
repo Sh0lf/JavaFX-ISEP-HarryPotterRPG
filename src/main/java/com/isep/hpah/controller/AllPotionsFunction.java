@@ -23,7 +23,7 @@ public class AllPotionsFunction {
                     popout.hpPopo(player, boost);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")) {
-                    // TODO : GUI part if player creation GUI
+                    popoutGUI.hpPopo(player, boost);
                 }
                 player.getPotionsOwned().remove(potion);
             }
@@ -35,7 +35,7 @@ public class AllPotionsFunction {
                     popout.defPopo(player, boost);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")) {
-                    // TODO : GUI part if player creation GUI
+                    popoutGUI.defPopo(player, boost);
                 }
                 player.getPotionsOwned().remove(potion);
             }
@@ -47,7 +47,7 @@ public class AllPotionsFunction {
                     popout.dexPopo(player, boost);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")) {
-                    // TODO : GUI part if player creation GUI
+                    popoutGUI.dexPopo(player, boost);
                 }
                 player.getPotionsOwned().remove(potion);
             }
@@ -64,7 +64,7 @@ public class AllPotionsFunction {
                     popout.houseBuffPopo(player);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")) {
-                    // TODO : GUI part if player creation GUI
+                    popoutGUI.houseBuffPopo(player);
                 }
             }
             return boost;

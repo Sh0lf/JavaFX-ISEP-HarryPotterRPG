@@ -27,7 +27,8 @@ public class GameLogic {
                 dngout.corrupted();
                 dngout.loss();
             } else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                dngoutGUI.corrupted();
+                dngoutGUI.loss();
             }
         }
     }
@@ -39,7 +40,7 @@ public class GameLogic {
                 dngout.umbridgeWinCon();
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                dngoutGUI.umbridgeWinCon();
             }
         }
     }
@@ -51,7 +52,9 @@ public class GameLogic {
             //list all the enemies with their stats
             dngout.listEnemies(enemies);
         } else if (Objects.equals(player.getTypeGame(), "GUI")){
-            // TODO : GUI part if player creation GUI
+            dngoutGUI.checkEnemiesText(enemies);
+            //list all the enemies with their stats
+            dngoutGUI.listEnemies(enemies);
         }
     }
 
@@ -60,6 +63,7 @@ public class GameLogic {
             dngout.isDefending(player);
         }
         else if (Objects.equals(player.getTypeGame(), "GUI")){
+            dngoutGUI.isDefending(player);
             // TODO : GUI part if player creation GUI
         }
     }
@@ -99,7 +103,7 @@ public class GameLogic {
             if (Objects.equals(player.getTypeGame(), "console")) {
                 dngout.potionEmpty();
             } else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                dngoutGUI.potionEmpty();
             }
             check = false;
         } else {
@@ -108,11 +112,7 @@ public class GameLogic {
             if (potionIndex == potions.size()){
                 check = false;
             } else {
-                if (Objects.equals(player.getTypeGame(), "console")) {
-                    popofnc.usePotion(player, potionIndex);
-                } else if (Objects.equals(player.getTypeGame(), "GUI")){
-                    // TODO : GUI part if player creation GUI
-                }
+                popofnc.usePotion(player, potionIndex);
                 check = true;
             }
         }
@@ -125,7 +125,7 @@ public class GameLogic {
             if (Objects.equals(player.getTypeGame(), "console")) {
                 dngout.gryffindorSwordTxt();
             } else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                dngoutGUI.gryffindorSwordTxt();
             }
         }
     }
@@ -140,7 +140,7 @@ public class GameLogic {
                 if (Objects.equals(player.getTypeGame(), "console")) {
                     dngout.voldemortCoreTxt(rand);
                 } else if (Objects.equals(player.getTypeGame(), "GUI")){
-                    // TODO : GUI part if player creation GUI
+                    dngoutGUI.voldemortCoreTxt(rand);
                 }
             }
             else if ((0.5 < rand) && (rand <= 0.8)){
@@ -149,7 +149,7 @@ public class GameLogic {
                 if (Objects.equals(player.getTypeGame(), "console")) {
                     dngout.voldemortCoreTxt(rand);
                 } else if (Objects.equals(player.getTypeGame(), "GUI")){
-                    // TODO : GUI part if player creation GUI
+                    dngoutGUI.voldemortCoreTxt(rand);
                 }
             }
             else if ((0.8 < rand) && (rand <= 1)){
@@ -158,7 +158,7 @@ public class GameLogic {
                 if (Objects.equals(player.getTypeGame(), "console")) {
                     dngout.voldemortCoreTxt(rand);
                 } else if (Objects.equals(player.getTypeGame(), "GUI")){
-                    // TODO : GUI part if player creation GUI
+                    dngoutGUI.voldemortCoreTxt(rand);
                 }
             }
         }

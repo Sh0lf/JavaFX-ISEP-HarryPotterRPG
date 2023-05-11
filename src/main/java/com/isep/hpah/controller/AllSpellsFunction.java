@@ -36,7 +36,7 @@ public class AllSpellsFunction {
                 return;
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                dngoutGUI.missedAtt(player);
             }
         }
 
@@ -46,7 +46,7 @@ public class AllSpellsFunction {
                 spout.slytherinBoost(player);
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                spoutGUI.slytherinBoost(player);
             }
         }
 
@@ -57,7 +57,7 @@ public class AllSpellsFunction {
             spout.dmgSpell(player, enemy, spell, (int) damage, remainingHealth);
         }
         else if (Objects.equals(player.getTypeGame(), "GUI")){
-            // TODO : GUI part if player creation GUI
+            spoutGUI.dmgSpell(player, enemy, spell, (int) damage, remainingHealth);
         }
     }
 
@@ -71,7 +71,7 @@ public class AllSpellsFunction {
                 spout.slytherinBoost(player);
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                spoutGUI.slytherinBoost(player);
             }
         }
         player.setDefSpell((int) val);
@@ -81,7 +81,7 @@ public class AllSpellsFunction {
             spout.defSpell(player, (int) val);
         }
         else if (Objects.equals(player.getTypeGame(), "GUI")){
-            // TODO : GUI part if player creation GUI
+            spoutGUI.defSpell(player, (int) val);
         }
     }
 
@@ -105,7 +105,7 @@ public class AllSpellsFunction {
                             spout.cooldownSpecial1();
                         }
                         else if (Objects.equals(player.getTypeGame(), "GUI")){
-                            // TODO : GUI part if player creation GUI
+                            spoutGUI.cooldownSpecial1();
                         }
                     }
                 } else if (spell.getName().equals("Expelliarmus") && spell.getCooldownRem() == 4){
@@ -115,7 +115,7 @@ public class AllSpellsFunction {
                             spout.cooldownSpecial2();
                         }
                         else if (Objects.equals(player.getTypeGame(), "GUI")){
-                            // TODO : GUI part if player creation GUI
+                            spoutGUI.cooldownSpecial2();
                         }
                     }
                 }
@@ -133,7 +133,7 @@ public class AllSpellsFunction {
             targetIndex = dngout.chooseTarget(enemies, sc);
         }
         else if (Objects.equals(player.getTypeGame(), "GUI")){
-            // TODO : GUI part if player creation GUI
+            targetIndex = dngoutGUI.chooseTarget(enemies, sc);
         }
         Character target = enemies.get(targetIndex);
         switch (target.getName()) {
@@ -156,7 +156,7 @@ public class AllSpellsFunction {
                 spout.wingardiumSpellCase(target);
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                spoutGUI.wingardiumSpellCase(target);
             }
         }
     }
@@ -168,7 +168,7 @@ public class AllSpellsFunction {
                 spout.wingardiumSpellCase(target);
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                spoutGUI.wingardiumSpellCase(target);
             }
 
         } else if (spell.getName().equals("Accio")) {
@@ -177,7 +177,7 @@ public class AllSpellsFunction {
                 spout.accioSpellCase(target);
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                spoutGUI.accioSpellCase(target);
             }
         }
     }
@@ -188,7 +188,7 @@ public class AllSpellsFunction {
                 spout.exceptionDementor();
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                spoutGUI.exceptionDementor();
             }
         }
     }
@@ -204,7 +204,7 @@ public class AllSpellsFunction {
                         spout.accioException();
                     }
                     else if (Objects.equals(player.getTypeGame(), "GUI")){
-                        // TODO : GUI part if player creation GUI
+                        spoutGUI.accioException();
                     }
                 } else {
                     target.setDef(target.getDef() - spell.getNum());
@@ -212,7 +212,7 @@ public class AllSpellsFunction {
                         spout.accioSpellCase(target);
                     }
                     else if (Objects.equals(player.getTypeGame(), "GUI")){
-                        // TODO : GUI part if player creation GUI
+                        spoutGUI.accioSpellCase(target);
                     }
                 }
             }
@@ -222,7 +222,7 @@ public class AllSpellsFunction {
                     spout.wingardiumSpellCase(target);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")){
-                    // TODO : GUI part if player creation GUI
+                    spoutGUI.wingardiumSpellCase(target);
                 }
             }
             case "Expelliarmus" -> {
@@ -232,7 +232,7 @@ public class AllSpellsFunction {
                         spout.expelliarmusSpellCase(target);
                     }
                     else if (Objects.equals(player.getTypeGame(), "GUI")){
-                        // TODO : GUI part if player creation GUI
+                        spoutGUI.expelliarmusSpellCase(target);
                     }
                 }
             }
@@ -248,7 +248,7 @@ public class AllSpellsFunction {
                 spout.accioException();
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                spoutGUI.accioException();
             }
         } else if (spell.getName().equals("Wingardium Leviosa")) {
             target.setHealth(target.getHealth() - spell.getNum());
@@ -256,7 +256,7 @@ public class AllSpellsFunction {
                 spout.wingardiumSpellCase(target);
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")){
-                // TODO : GUI part if player creation GUI
+                spoutGUI.wingardiumSpellCase(target);
             }
         }
     }
@@ -269,7 +269,7 @@ public class AllSpellsFunction {
                     spout.expelliarmusSpellCase(target);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")){
-                    // TODO : GUI part if player creation GUI
+                    spoutGUI.expelliarmusSpellCase(target);
                 }
             }
             case "Accio" -> {
@@ -278,7 +278,7 @@ public class AllSpellsFunction {
                     spout.accioSpellCase(target);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")){
-                    // TODO : GUI part if player creation GUI
+                    spoutGUI.accioSpellCase(target);
                 }
             }
             case "Wingardium Leviosa" -> {
@@ -287,7 +287,7 @@ public class AllSpellsFunction {
                     spout.wingardiumSpellCase(target);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")){
-                    // TODO : GUI part if player creation GUI
+                    spoutGUI.wingardiumSpellCase(target);
                 }
             }
         }

@@ -38,7 +38,7 @@ public class EnemyGame {
                     dngout.gainedExp(enemy);
                 }
                 else if (Objects.equals(player.getTypeGame(), "GUI")) {
-                    // TODO : GUI part if player creation GUI
+                    dngoutGUI.gainedExp(enemy);
                 }
             }
         }
@@ -54,7 +54,7 @@ public class EnemyGame {
                 dngout.isDefending(enemy);
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")) {
-                // TODO : GUI part if player creation GUI
+                dngoutGUI.isDefending(enemy);
             }
         }
     }
@@ -69,7 +69,7 @@ public class EnemyGame {
                 dngout.isDefending(enemy);
             }
             else if (Objects.equals(player.getTypeGame(), "GUI")) {
-                // TODO : GUI part if player creation GUI
+                dngoutGUI.isDefending(enemy);
             }
         } else if ( 0.7 < rand && rand <= 0.9) {
             List<AbstractSpell> enemySpell = enemy.getKnownSpells();
