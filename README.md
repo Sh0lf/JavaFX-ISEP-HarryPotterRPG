@@ -21,7 +21,7 @@ Clone the project to your machine. It needs to have the current latest version: 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd HarryPotterJavaFX
 ```
 
 Install dependencies
@@ -36,11 +36,17 @@ Start the server
   npm run start
 ```
 
-I would however recommend dowloading the project in an archaic method like dowloading the whole zip file and then opening the file through a code editor like IntelliJ to run the program.
+However, I would recommend simply dowloading the project in an archaic method like dowloading the whole zip file and then opening the folder through a code editor like IntelliJ to run the program.
 
 # How to play
 
-When you launch the ***main.java*** file, you'll find a prompt in your console asking you to choose how you would like to play:
+When you launch the ***main.java*** file in 
+
+```bash
+  HarryPotterJavaFX>src>main>java>com>isep>hpah
+```
+
+you'll find a prompt in your console asking you to choose how you would like to play:
 
 ![App Screenshot](https://snipboard.io/eav8DN.jpg)
 
