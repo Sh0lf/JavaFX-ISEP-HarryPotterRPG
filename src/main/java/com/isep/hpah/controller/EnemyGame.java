@@ -5,6 +5,7 @@ import com.isep.hpah.model.constructors.character.Character;
 import com.isep.hpah.model.constructors.character.*;
 import com.isep.hpah.model.constructors.spells.AbstractSpell;
 import com.isep.hpah.views.GUI.DungeonOutputGUI;
+import com.isep.hpah.views.GUI.controller.DungeonCombatController;
 import com.isep.hpah.views.console.DungeonOutput;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class EnemyGame {
     AllSpellsFunction spfnc = new AllSpellsFunction();
     AllPotionsFunction popofnc = new AllPotionsFunction();
     DungeonOutput dngout = new DungeonOutput();
-    DungeonOutputGUI dngoutGUI = new DungeonOutputGUI();
+    DungeonCombatController dngoutGUI = new DungeonCombatController();
 
 
     public void enemiesTurn(List<Character> enemies, Wizard player){

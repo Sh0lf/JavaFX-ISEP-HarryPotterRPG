@@ -4,6 +4,7 @@ import com.isep.hpah.model.constructors.*;
 import com.isep.hpah.model.constructors.character.Wizard;
 import com.isep.hpah.model.constructors.spells.AbstractSpell;
 import com.isep.hpah.views.GUI.DungeonOutputGUI;
+import com.isep.hpah.views.GUI.controller.DungeonCombatController;
 import com.isep.hpah.views.console.DungeonOutput;
 import com.isep.hpah.views.console.SafeScanner;
 import com.isep.hpah.model.constructors.character.Character; //Because of suspected ambiguity
@@ -18,7 +19,7 @@ public class GameLogic {
     private final Setup stp = new Setup();
     private final SafeScanner sc = new SafeScanner(System.in);
     private final DungeonOutput dngout = new DungeonOutput();
-    private final DungeonOutputGUI dngoutGUI = new DungeonOutputGUI();
+    private final DungeonCombatController dngoutGUI = new DungeonCombatController();
 
     public void corruptionCheck(Wizard player){
         if (player.getCorruptionGauge() >= 100){

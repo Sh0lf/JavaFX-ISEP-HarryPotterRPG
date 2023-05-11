@@ -5,66 +5,19 @@ import com.isep.hpah.model.constructors.Potion;
 import com.isep.hpah.model.constructors.character.Character;
 import com.isep.hpah.model.constructors.character.Wizard;
 import com.isep.hpah.model.constructors.spells.AbstractSpell;
+import com.isep.hpah.views.GUI.controller.DungeonCombatController;
 import com.isep.hpah.views.console.SafeScanner;
 import com.isep.hpah.views.console.SimpleOutput;
+import javafx.fxml.FXML;
+import javafx.scene.text.Text;
 
 import java.util.List;
 
 public class DungeonOutputGUI {
 
     SimpleOutput out = new SimpleOutput();
+    DungeonCombatController dngscene = new DungeonCombatController();
 
-    public void listEnemies(List<Character> enemies) {
-        for (Character enemy : enemies) {
-            out.print("\nEnemy: " + enemy.getName() + "\nHealth: " + enemy.getHealth() + "\n" + enemy.getType()+ "\n");
-        }
-    }
-
-    public void checkEnemiesText(List<Character> enemies) {
-        label:
-        for (Character enemy : enemies) {
-            switch (enemy.getName()) {
-                case "Troll":
-                    out.print("\nYou see a boulder above the troll's head, what can you do with it ?\n");
-                    break;
-                case "Basilisk":
-                    out.print("\nIt's a poisonous powerful snake, try to remove his fangs in a way or another !\n");
-                    break;
-                case "Dementor":
-                    out.print("\nThere are too many dementors ! Scare them out with one of your spells ! They are scared of divine creatures !\n");
-                    break label;
-                case "Peter Pettigrew":
-                    out.print("\nYou cannot fight them ! Find a way to get closer to the Portkey as fast as you can !\n");
-                    break;
-                case "Dolores Umbridge":
-                    out.print("\nTry to delay and waste time as much as you can !\n");
-                    break;
-                case "Death Eater":
-                    out.print("\nThere are too many death eaters! Scare them out with one of your spells ! They do not like to suffer !\n");
-                    break label;
-                case "Lord Voldemort", "Bellatrix Lestrange":
-                    out.print("\nHe can use Avada Kedavra ! Consider this possibility and protect yourself !\n");
-                    break label;
-            }
-        }
-    }
-
-    public void gryffindorSwordTxt(){
-        out.print("Since you're a gryffindor, you have the sword of Gryffindor against the basilisk !\n" +
-                "You deal double damage with your basic attacks !");
-    }
-
-    public void voldemortCoreTxt(double rand){
-        if (rand <= 0.5){
-            out.print("Having the same wand core as Voldemort, you suffered some damage and took 20 health !");
-        }
-        else if ((0.5 < rand) && (rand <= 0.8)){
-            out.print("Having the same wand core as Voldemort, you feel weak and loss 10 def for this battle !");
-        }
-        else if ((0.8 < rand) && (rand <= 1)){
-            out.print("Having the same wand core as Voldemort, you feel slowed by a force and loss 5 dexterity for this battle !");
-        }
-    }
 
     public int presentingTurnTxt(int i, int round, Wizard player, List<Character> enemies, SafeScanner sc, List<String> poss) {
         int n;
@@ -145,10 +98,6 @@ public class DungeonOutputGUI {
                 verifInput = false;
             }
         } return targetIndex;
-    }
-
-    public void isDefending(Character player){
-        out.print(player.getName() + " has decided to defend");
     }
 
     public int chooseSpell(List<AbstractSpell> spells, SafeScanner sc){
