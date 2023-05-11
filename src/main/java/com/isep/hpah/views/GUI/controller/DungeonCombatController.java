@@ -211,17 +211,9 @@ public class DungeonCombatController {
                 while (!verifInput) {
                     try {
                         Text turn = new Text("It's your turn to attack. What do you want to do?");
-
                         turn.setFont(Font.font("Arial", FontPosture.REGULAR, 16));
                         gameText.getChildren().add(turn);
 
-                        out.print("5. Ally with the Death Eaters");
-                        i = sc.getInt();
-                        if (i > poss.size()+1) {
-                            out.print("Number out of index and does not exist ! retry");
-                        } else {
-                            verifInput = true;
-                        }
                     } catch (Exception e) {
                         out.print("Please write valid content");
                         verifInput = false;
